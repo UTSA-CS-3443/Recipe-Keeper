@@ -8,12 +8,14 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollBar?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.web.HTMLEditor?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="655.0" prefWidth="477.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="655.0" prefWidth="543.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
    <top>
       <VBox BorderPane.alignment="CENTER">
          <children>
@@ -36,20 +38,18 @@
                 </Menu>
               </menus>
             </MenuBar>
-            <HBox prefHeight="53.0" prefWidth="600.0">
+            <HBox>
+               <VBox.margin>
+                  <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+               </VBox.margin>
                <children>
-                  <Label alignment="CENTER" prefHeight="33.0" prefWidth="109.0" text="Recipe Name">
+                  <TextField alignment="CENTER" prefHeight="27.0" prefWidth="99.0" text="Burger" />
+                  <Region prefHeight="27.0" prefWidth="87.0" HBox.hgrow="ALWAYS" />
+                  <ComboBox prefHeight="27.0" prefWidth="128.0" promptText="Serving Size">
                      <HBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </HBox.margin>
-                  </Label>
-                  <Region prefHeight="53.0" prefWidth="0.0" HBox.hgrow="ALWAYS" />
-                  <ComboBox prefHeight="29.0" prefWidth="125.0" promptText="Serving Size">
-                     <HBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                        <Insets />
                      </HBox.margin>
                   </ComboBox>
-                  <Region prefHeight="53.0" prefWidth="80.0" HBox.hgrow="ALWAYS" />
                </children>
             </HBox>
          </children>
@@ -59,27 +59,19 @@
       <VBox prefHeight="462.0" prefWidth="476.0" BorderPane.alignment="CENTER">
          <children>
             <Separator prefHeight="0.0" prefWidth="476.0" />
-            <HBox prefHeight="53.0" prefWidth="534.0">
+            <HBox prefHeight="19.0" prefWidth="457.0">
                <children>
-                  <Label alignment="CENTER" prefHeight="33.0" prefWidth="95.0" text="Ingredients">
-                     <HBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </HBox.margin>
-                  </Label>
-                  <Region prefHeight="53.0" prefWidth="44.0" HBox.hgrow="ALWAYS" />
-                  <Label alignment="CENTER" prefHeight="33.0" prefWidth="101.0" text="Quantity">
-                     <HBox.margin>
-                        <Insets bottom="10.0" right="15.0" top="10.0" />
-                     </HBox.margin>
-                  </Label>
-                  <Region prefHeight="53.0" prefWidth="45.0" HBox.hgrow="ALWAYS" />
-                  <Label alignment="CENTER" prefHeight="33.0" prefWidth="91.0" text="Unit">
-                     <HBox.margin>
-                        <Insets bottom="10.0" right="5.0" top="10.0" />
-                     </HBox.margin>
-                  </Label>
-                  <Region prefHeight="53.0" prefWidth="19.0" />
+                  <Region prefHeight="19.0" prefWidth="0.0" HBox.hgrow="ALWAYS" />
+                  <Label prefHeight="17.0" prefWidth="80.0" text="Ingredient" />
+                  <Region prefHeight="19.0" prefWidth="111.0" HBox.hgrow="ALWAYS" />
+                  <Label alignment="CENTER" prefHeight="17.0" prefWidth="81.0" text="Quantity" />
+                  <Region prefHeight="19.0" prefWidth="73.0" HBox.hgrow="ALWAYS" />
+                  <Label alignment="CENTER" prefHeight="17.0" prefWidth="53.0" text="Unit" />
+                  <Region prefHeight="19.0" prefWidth="0.0" HBox.hgrow="ALWAYS" />
                </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
             </HBox>
             <Separator prefWidth="200.0" />
             <VBox>
@@ -89,11 +81,66 @@
                         <ScrollBar orientation="VERTICAL" prefHeight="153.0" prefWidth="20.0" BorderPane.alignment="CENTER" />
                      </right>
                      <center>
-                        <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+                        <VBox minHeight="-Infinity" prefHeight="97.0" prefWidth="457.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <HBox prefHeight="0.0" prefWidth="447.0">
+                                 <children>
+                                    <TextField alignment="CENTER" prefHeight="27.0" prefWidth="196.0" text="Ground beef" />
+                                    <Region prefHeight="27.0" prefWidth="209.0" HBox.hgrow="ALWAYS" />
+                                    <TextField alignment="CENTER" prefHeight="27.0" prefWidth="135.0" text="1" />
+                                    <Region prefHeight="27.0" prefWidth="173.0" HBox.hgrow="ALWAYS" />
+                                    <TextField alignment="CENTER" prefHeight="27.0" prefWidth="145.0" text="tbs" />
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets bottom="2.0" left="10.0" right="10.0" top="10.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox layoutX="20.0" layoutY="20.0" prefHeight="0.0" prefWidth="447.0">
+                                 <children>
+                                    <TextField alignment="CENTER" prefHeight="27.0" prefWidth="196.0" text="Salt" />
+                                    <Region prefHeight="27.0" prefWidth="209.0" HBox.hgrow="ALWAYS" />
+                                    <TextField alignment="CENTER" prefHeight="27.0" prefWidth="135.0" text="3" />
+                                    <Region prefHeight="27.0" prefWidth="173.0" HBox.hgrow="ALWAYS" />
+                                    <TextField alignment="CENTER" prefHeight="27.0" prefWidth="145.0" text="tsp" />
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets bottom="2.0" left="10.0" right="10.0" top="2.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox layoutX="10.0" layoutY="47.0" prefHeight="0.0" prefWidth="447.0">
+                                 <children>
+                                    <TextField alignment="CENTER" prefHeight="27.0" prefWidth="196.0" text="Peper" />
+                                    <Region prefHeight="27.0" prefWidth="209.0" HBox.hgrow="ALWAYS" />
+                                    <TextField alignment="CENTER" prefHeight="27.0" prefWidth="135.0" text="3" />
+                                    <Region prefHeight="27.0" prefWidth="173.0" HBox.hgrow="ALWAYS" />
+                                    <TextField alignment="CENTER" prefHeight="27.0" prefWidth="145.0" text="tsp" />
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets bottom="2.0" left="10.0" right="10.0" top="2.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox layoutX="20.0" layoutY="82.0" prefHeight="0.0" prefWidth="447.0">
+                                 <children>
+                                    <TextField alignment="CENTER" prefHeight="27.0" prefWidth="196.0" text="Onion" />
+                                    <Region prefHeight="27.0" prefWidth="209.0" HBox.hgrow="ALWAYS" />
+                                    <TextField alignment="CENTER" prefHeight="27.0" prefWidth="135.0" text="2" />
+                                    <Region prefHeight="27.0" prefWidth="173.0" HBox.hgrow="ALWAYS" />
+                                    <TextField alignment="CENTER" prefHeight="27.0" prefWidth="145.0" text="rings" />
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets bottom="2.0" left="10.0" right="10.0" top="2.0" />
+                                 </VBox.margin>
+                              </HBox>
+                           </children>
+                           <BorderPane.margin>
+                              <Insets />
+                           </BorderPane.margin>
+                        </VBox>
                      </center>
                   </BorderPane>
                </children>
             </VBox>
+            <HTMLEditor htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;Bla bla bla&lt;/body&gt;&lt;/html&gt;" prefHeight="223.0" prefWidth="477.0" />
          </children>
       </VBox>
    </center>
