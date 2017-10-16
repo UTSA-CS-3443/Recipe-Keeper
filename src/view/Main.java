@@ -13,9 +13,9 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("ReadInterface.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("EditInterface.fxml"));
 			Scene scene = new Scene(root, 543, 800);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			scene.getStylesheets().add(getClass().getResource("RecipeKeeper.css").toExternalForm());
 			primaryStage.setTitle("Interface Demo");
 			primaryStage.setScene(scene);
 			primaryStage.show();

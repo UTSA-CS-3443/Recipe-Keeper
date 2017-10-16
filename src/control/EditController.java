@@ -11,6 +11,12 @@ import javafx.scene.control.*;
 
 public class EditController implements Initializable {
 	
+	@FXML	// fx:id="addIngredient"
+	private Button addIngredient = new Button();			// "+" button
+	
+	@FXML	// fx:id="subtractIngredient"
+	private Button subtractIngredient = new Button();		// "-" button
+	
 	@FXML // fx:id="servingSize"
 	private ComboBox<String> servingSize = new ComboBox<String>(); // value injected my FXMLLoader
 
