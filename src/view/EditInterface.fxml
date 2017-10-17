@@ -20,7 +20,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.web.HTMLEditor?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="543.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.EditController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="763.0" prefWidth="543.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.EditController">
    <top>
       <VBox BorderPane.alignment="CENTER">
          <children>
@@ -130,15 +130,121 @@
             <VBox>
                <children>
                   <Separator prefWidth="200.0" />
-                  <Label text="Instructions">
+                  <Label text="Instructions" textAlignment="CENTER" VBox.vgrow="ALWAYS">
                      <VBox.margin>
-                        <Insets bottom="2.0" left="10.0" right="2.0" top="2.0" />
+                        <Insets bottom="8.0" left="10.0" right="2.0" top="8.0" />
                      </VBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
                   </Label>
-                  <HTMLEditor prefHeight="223.0" prefWidth="477.0" />
+                  <HTMLEditor htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;How to make this dish...&lt;/body&gt;&lt;/html&gt;" prefHeight="223.0" prefWidth="477.0" />
                </children>
+            </VBox>
+            <VBox prefHeight="177.0" prefWidth="543.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <Label text="Categories">
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <HBox prefHeight="143.0" prefWidth="543.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <GridPane prefHeight="134.0" prefWidth="156.0" HBox.hgrow="ALWAYS">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints maxHeight="68.0" minHeight="10.0" prefHeight="68.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="69.0" minHeight="10.0" prefHeight="66.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <TextField GridPane.rowIndex="1" />
+                              <TextField prefHeight="27.0" prefWidth="113.0" />
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <HBox.margin>
+                              <Insets left="8.0" />
+                           </HBox.margin>
+                        </GridPane>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Button mnemonicParsing="false" text="+" VBox.vgrow="ALWAYS">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Button>
+                              <Button mnemonicParsing="false" text="-" VBox.vgrow="ALWAYS">
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </VBox>
+                        <ScrollPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                           <content>
+                              <GridPane prefHeight="153.0" prefWidth="182.0">
+                                <columnConstraints>
+                                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="92.0" minWidth="10.0" prefWidth="92.0" />
+                                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="91.0" minWidth="10.0" prefWidth="90.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <Label text="Label" />
+                                    <Label text="Label" GridPane.columnIndex="1" />
+                                    <Label text="Label" GridPane.rowIndex="1" />
+                                    <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <Label text="Label" GridPane.rowIndex="2" />
+                                    <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    <Label text="Label" GridPane.rowIndex="3" />
+                                    <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                 </children>
+                              </GridPane>
+                           </content>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </ScrollPane>
+                     </children>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
             </VBox>
          </children>
       </VBox>
    </center>
+   <bottom>
+      <VBox prefHeight="79.0" prefWidth="543.0" BorderPane.alignment="CENTER">
+         <children>
+            <Separator prefWidth="200.0" />
+            <HBox alignment="CENTER" prefHeight="98.0" prefWidth="543.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <Label alignment="CENTER" text="Bon Appétit" HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </bottom>
 </BorderPane>
