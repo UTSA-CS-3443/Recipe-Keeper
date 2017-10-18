@@ -45,7 +45,7 @@
                   <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                </VBox.margin>
                <children>
-                  <TextField alignment="CENTER" prefHeight="27.0" prefWidth="99.0" text="Burger" />
+                  <TextField fx:id="readField" alignment="CENTER" editable="false" prefHeight="27.0" prefWidth="99.0" text="Burger" />
                   <Region prefHeight="27.0" prefWidth="87.0" HBox.hgrow="ALWAYS" />
                   <ComboBox fx:id="servingSize" prefHeight="27.0" prefWidth="128.0" promptText="Serving Size" />
                </children>
@@ -96,15 +96,15 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <TextField />
-                        <TextField GridPane.columnIndex="2" />
-                        <TextField GridPane.columnIndex="4" />
-                        <TextField GridPane.rowIndex="1" />
-                        <TextField GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                        <TextField GridPane.columnIndex="4" GridPane.rowIndex="1" />
-                        <TextField GridPane.rowIndex="2" />
-                        <TextField GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                        <TextField GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                        <TextField fx:id="readField" editable="false" text="You" />
+                        <TextField fx:id="readField" editable="false" text="Can't" GridPane.columnIndex="2" />
+                        <TextField fx:id="readField" editable="false" text="Edit" GridPane.columnIndex="4" />
+                        <TextField fx:id="readField" editable="false" text="These" GridPane.rowIndex="1" />
+                        <TextField fx:id="readField" editable="false" text="Field" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <TextField fx:id="readField" editable="false" text="Click" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                        <TextField fx:id="readField" editable="false" text="Edit" GridPane.rowIndex="2" />
+                        <TextField fx:id="readField" editable="false" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                        <TextField fx:id="readField" editable="false" text="." GridPane.columnIndex="4" GridPane.rowIndex="2" />
                      </children>
                   </GridPane>
                </content>
@@ -120,7 +120,7 @@
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <TextArea prefHeight="200.0" prefWidth="200.0" text="How to make this dish ..." />
+                  <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" text="How to make this dish ..." />
                </children>
             </VBox>
             <VBox prefHeight="177.0" prefWidth="543.0" VBox.vgrow="ALWAYS">
