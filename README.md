@@ -3,7 +3,7 @@ TODO
 - Create sample data file (parse data to control from model)
 
 - NewInferface, NewController:
-  + addIngredient 
+  + addIngredient - fix bug on Unit + add Pop-up window
   + delIngredient
   + servingSize Listener
   + responsive view (?)

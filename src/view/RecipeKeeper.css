@@ -2,3 +2,10 @@
 	
 }
 
+#Ingredients .table-column {
+	-fx-text-alignment: CENTER;
+}
+
+#Ingredients .table-cell {
+	-fx-alignment: CENTER;
+}
