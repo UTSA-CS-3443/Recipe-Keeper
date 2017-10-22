@@ -26,6 +26,7 @@ import javafx.scene.layout.BorderPane;
 
 import model.Ingredient;
 
+
 public class NewController implements Initializable{
 	@FXML // fx:id="motherPane"
 	BorderPane motherPane = new BorderPane();
@@ -85,13 +86,17 @@ public class NewController implements Initializable{
 		// addIngredient onClickListener
 		addIngredient.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
-			public void handle(ActionEvent event) {
+			public void handle(ActionEvent event) throws IllegalArgumentException {
 				System.out.println("addIngredient Press");
 				try {
-					if (ingreName.getText() == null || ingreQty.getText() == null || ingreUnit.getText() == null ||
-						ingreName.getText() == "" || ingreQty.getText() == "" || ingreUnit.getText() == "") 
-						throw new Exception();
-					// else ....
+					
+					if (ingreName.getText().equals(null) || ingreQty.getText().equals(null) || ingreUnit.getText().equals(null) ||
+						ingreName.getText().equals("") || ingreQty.getText().equals("") || ingreUnit.getText().equals("")) 
+						throw new IngredientException("One or more fields are empty");
+					else if (isNumeric(ingreName.getText())) throw new IngredientException("Ingredient Name");
+					else if (!isNumeric(ingreQty.getText())) throw new IngredientException("Ingredient Quantity");
+					else if (isNumeric(ingreUnit.getText())) throw new IngredientException("Ingredient Unit");
+					
 					String name, unit;
 					int qty;
 					name = ingreName.getText();
@@ -100,9 +105,7 @@ public class NewController implements Initializable{
 					Ingredient i = new Ingredient (name, qty, unit);
 					ingredients.add(i);
 					
-				} catch (Exception e) {
-					System.out.println("One of the field is empty");
-				}
+				} catch (IngredientException e) {  }
 			}
 		});
 
@@ -110,9 +113,30 @@ public class NewController implements Initializable{
 			@Override
 			public void handle(ActionEvent event) {
 				System.out.println("delIngredient Press");
+				try {
+					if (ingredients.size() < 1) throw new RuntimeException(); 
+					
+					ingredients.remove(ingredients.size()-1);
+					
+				} catch (RuntimeException e) {
+					AlertBox.display("Warning", "Ingredient List Is Empty");
+				}
 			}
 		});
 	}
 
+	// isNumeric method
+	public static boolean isNumeric(String str)  
+	{  
+	  try  
+	  {  
+	    Double.parseDouble(str);  
+	  }  
+	  catch(NumberFormatException nfe)  
+	  {  
+	    return false;  
+	  }  
+	  return true;  
+	}
 	
 }
