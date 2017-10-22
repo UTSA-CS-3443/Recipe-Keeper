@@ -65,7 +65,10 @@ public class NewController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
-		// setup servingSize drop down menu
+		/**
+		 * Sets up servingSize ComboBox 
+		 * and its Handler
+		 */
 		servingSize.getItems().addAll("1", "2", "3");		
 		servingSize.setOnAction( e -> {
 			servingSize.setPromptText("Serving Size" + servingSize.getValue());
@@ -96,7 +99,9 @@ public class NewController implements Initializable{
 		addIngredient.disabledProperty().and(ingreName.textProperty().isEqualTo("")
 				.or(ingreQty.textProperty().isEqualTo("")).or(ingreUnit.textProperty().isEqualTo("")));
 
-		// Add Ingredient
+		/**
+		 * EventHandler for adding an ingredient
+		 */
 		addIngredient.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) throws IllegalArgumentException {
@@ -122,7 +127,9 @@ public class NewController implements Initializable{
 			}
 		});
 
-		// Delete Ingredient
+		/**
+		 * EventHandler for deleting an ingredient
+		 */
 		delIngredient.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
@@ -140,9 +147,9 @@ public class NewController implements Initializable{
 	}
 
 	/**
-	 * 
+	 * Check if a string is numeric
 	 * @param str
-	 * @return 
+	 * @return true if it is, false if otherwise
 	 */
 	public static boolean isNumeric(String str)  
 	{  
@@ -156,7 +163,15 @@ public class NewController implements Initializable{
 		}  
 		return true;  
 	}
-
+	
+	/**
+	 * Change value at specific location of TableView
+	 * used for servingSize onAction
+	 * @param row
+	 * @param col
+	 * @param value
+	 * @param table
+	 */
 	private static void changeValueAt(int row, int col, double value, TableView<Ingredient> table) {
 		Ingredient newData = table.getItems().get(row);
 		newData.setQuantity(value);
