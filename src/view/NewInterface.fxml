@@ -48,7 +48,7 @@
                <children>
                   <TextField alignment="CENTER" prefHeight="27.0" prefWidth="99.0" text="Burger" />
                   <Region prefHeight="27.0" prefWidth="87.0" HBox.hgrow="ALWAYS" />
-                  <ComboBox fx:id="servingSize" prefHeight="27.0" prefWidth="128.0" promptText="Serving Size" />
+                  <ComboBox fx:id="servingSize" prefHeight="27.0" prefWidth="128.0" promptText="Serving Size" HBox.hgrow="ALWAYS" />
                </children>
             </HBox>
          </children>
