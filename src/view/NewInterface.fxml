@@ -57,7 +57,7 @@
    <center>
       <VBox prefHeight="616.0" prefWidth="543.0" BorderPane.alignment="CENTER">
          <children>
-            <TableView fx:id="Ingredients" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+            <TableView fx:id="ingredientsTable" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>

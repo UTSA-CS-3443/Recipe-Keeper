@@ -4,7 +4,7 @@ package model;
  * name as the ingredient's name
  * quantity as the amount of the ingredient needed for the recipe
  * and unit as the quantity's unit
- * @author hoapham
+ * @author Hoa Pham
  * 
  */
 public class Ingredient {

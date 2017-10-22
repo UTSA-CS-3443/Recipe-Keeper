@@ -2,10 +2,10 @@
 	
 }
 
-#Ingredients .table-column {
+#ingredientsTable .table-column {
 	-fx-text-alignment: CENTER;
 }
 
-#Ingredients .table-cell {
+#ingredientsTable .table-cell {
 	-fx-alignment: CENTER;
 }

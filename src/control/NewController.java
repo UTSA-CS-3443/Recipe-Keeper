@@ -53,8 +53,8 @@ public class NewController implements Initializable{
 	@FXML // fx:id="delCategory"
 	Button delCategory = new Button();
 
-	@FXML // fx:id="Ingredients"
-	TableView<Ingredient> Ingredients = new TableView<>();
+	@FXML // fx:id="ingredientsTable"
+	TableView<Ingredient> ingredientsTable = new TableView<>();
 
 	// temporary ingredients list
 	ObservableList<Ingredient> ingredients = FXCollections.observableArrayList();
@@ -66,8 +66,8 @@ public class NewController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 
 		/**
-		 * Sets up servingSize ComboBox 
-		 * and its Handler
+		 * Sets up serving size ComboBox and
+		 * its handler 
 		 */
 		servingSize.getItems().addAll("1", "2", "3");		
 		servingSize.setOnAction( e -> {
@@ -75,7 +75,7 @@ public class NewController implements Initializable{
 			for (int i = 0; i < ingredients.size(); i++) {
 				double tempQty;
 				tempQty = Double.parseDouble(servingSize.getValue()) * qtyPerServingSize.get(i);
-				changeValueAt(i, 2, tempQty, Ingredients);
+				changeValueAt(i, 2, tempQty, ingredientsTable);
 			}
 		});
 
@@ -91,9 +91,9 @@ public class NewController implements Initializable{
 		TableColumn<Ingredient, String> unitColumn = new TableColumn<>("Unit");
 		unitColumn.setCellValueFactory(new PropertyValueFactory<>("unit"));
 
-		// Set Ingredients
-		Ingredients.setItems(ingredients);
-		Ingredients.getColumns().addAll(ingredientColumn, quantityColumn, unitColumn);
+		// Set ingredientsTable
+		ingredientsTable.setItems(ingredients);
+		ingredientsTable.getColumns().addAll(ingredientColumn, quantityColumn, unitColumn);
 
 		// Disable if nothing enter in ingreName or ingreQty or ingreUnit is empty
 		addIngredient.disabledProperty().and(ingreName.textProperty().isEqualTo("")
@@ -135,8 +135,14 @@ public class NewController implements Initializable{
 			public void handle(ActionEvent event) {
 				try {
 					if (ingredients.size() < 1) throw new RuntimeException(); 
-
-					ingredients.remove(ingredients.size()-1);
+					
+					int selectedIndex = ingredientsTable.getSelectionModel().getSelectedIndex();
+					if (selectedIndex >= 0) {
+						ingredientsTable.getItems().remove(selectedIndex);
+					}
+					else {
+						AlertBox.display("Warning", "No Item Selected");
+					}
 
 				} catch (RuntimeException e) {
 					AlertBox.display("Warning", "Ingredient List Is Empty");

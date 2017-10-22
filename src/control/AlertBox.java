@@ -9,7 +9,7 @@ import javafx.geometry.*;
 /**
  * AlertBox create a warning window that force the user to close it
  * before continuing to use the app
- * @author hoapham
+ * @author Hoa Pham
  *
  */
 public class AlertBox {
