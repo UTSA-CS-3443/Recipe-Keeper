@@ -6,8 +6,19 @@ import javafx.scene.layout.*;
 import javafx.scene.control.*;
 import javafx.geometry.*;
 
+/**
+ * AlertBox create a warning window that force the user to close it
+ * before continuing to use the app
+ * @author hoapham
+ *
+ */
 public class AlertBox {
 
+	/**
+	 * Display warning window method
+	 * @param title - "Warning"
+	 * @param message - Error that the user makes 
+	 */
     public static void display(String title, String message) {
         Stage window = new Stage();
 

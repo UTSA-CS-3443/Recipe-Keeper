@@ -1,6 +1,8 @@
 package control;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import javafx.beans.*;
@@ -17,7 +19,12 @@ import javafx.scene.layout.BorderPane;
 
 import model.Ingredient;
 
-
+/**
+ * NewController initializes when user chooses to create a new recipe
+ * File -> New
+ * @author hoapham
+ *
+ */
 public class NewController implements Initializable{
 	@FXML // fx:id="motherPane"
 	BorderPane motherPane = new BorderPane();
@@ -52,6 +59,9 @@ public class NewController implements Initializable{
 	// temporary ingredients list
 	ObservableList<Ingredient> ingredients = FXCollections.observableArrayList();
 
+	// quantity per serving size
+	List<Double> qtyPerServingSize = new ArrayList<Double>();
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
@@ -59,14 +69,11 @@ public class NewController implements Initializable{
 		servingSize.getItems().addAll("1", "2", "3");		
 		servingSize.setOnAction( e -> {
 			servingSize.setPromptText("Serving Size" + servingSize.getValue());
-			ObservableList<Ingredient> tempIngredients = ingredients; 
 			for (int i = 0; i < ingredients.size(); i++) {
-				Ingredient temp = tempIngredients.get(i);
-				int tempQty = temp.getQuantity();
-				temp.setQuantity(tempQty * Integer.parseInt(servingSize.getValue()));
-				tempIngredients.set(i, temp);
+				double tempQty;
+				tempQty = Double.parseDouble(servingSize.getValue()) * qtyPerServingSize.get(i);
+				changeValueAt(i, 2, tempQty, Ingredients);
 			}
-			tempIngredients = ingredients;
 		});
 
 		// Ingredient column
@@ -103,12 +110,13 @@ public class NewController implements Initializable{
 					else if (isNumeric(ingreUnit.getText())) throw new IngredientException("Ingredient Unit");
 
 					String name, unit;
-					int qty;
+					double qty;
 					name = ingreName.getText();
 					qty = Integer.valueOf(ingreQty.getText());
 					unit = ingreUnit.getText();
 					Ingredient i = new Ingredient (name, qty, unit);
 					ingredients.add(i);
+					qtyPerServingSize.add(qty);
 
 				} catch (IngredientException e) {  }
 			}
@@ -131,7 +139,11 @@ public class NewController implements Initializable{
 
 	}
 
-	// isNumeric method
+	/**
+	 * 
+	 * @param str
+	 * @return 
+	 */
 	public static boolean isNumeric(String str)  
 	{  
 		try  
@@ -145,4 +157,10 @@ public class NewController implements Initializable{
 		return true;  
 	}
 
+	private static void changeValueAt(int row, int col, double value, TableView<Ingredient> table) {
+		Ingredient newData = table.getItems().get(row);
+		newData.setQuantity(value);
+		table.getItems().set(row, newData);
+	}
+	
 }

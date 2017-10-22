@@ -4,8 +4,8 @@ TODO
 
 - NewInferface, NewController:
   + addIngredient (complete)
-  + delIngredient (complete)
-  + servingSize Listener
+  + delIngredient (complete, delete from the bottom of the list)
+  + servingSize Listener (complete)
   + responsive view (?)
   + Save, Save As Listener
   + Converter (later)
