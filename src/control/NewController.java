@@ -28,6 +28,9 @@ import model.Ingredient;
 public class NewController implements Initializable{
 	@FXML // fx:id="motherPane"
 	BorderPane motherPane = new BorderPane();
+	
+	@FXML
+	TextField recipeName = new TextField(); 
 
 	@FXML // fx:id="ingreName"
 	TextField ingreName = new TextField();

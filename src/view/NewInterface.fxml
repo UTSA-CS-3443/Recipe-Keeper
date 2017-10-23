@@ -46,7 +46,7 @@
                   <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                </VBox.margin>
                <children>
-                  <TextField alignment="CENTER" prefHeight="27.0" prefWidth="99.0" text="Burger" />
+                  <TextField fx:id="recipeName" alignment="CENTER" prefHeight="27.0" prefWidth="99.0" text="Burger" />
                   <Region prefHeight="27.0" prefWidth="87.0" HBox.hgrow="ALWAYS" />
                   <ComboBox fx:id="servingSize" prefHeight="27.0" prefWidth="128.0" promptText="Serving Size" HBox.hgrow="ALWAYS" />
                </children>
