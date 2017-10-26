@@ -29,7 +29,7 @@ public class NewController implements Initializable{
 	@FXML // fx:id="motherPane"
 	BorderPane motherPane = new BorderPane();
 	
-	@FXML
+	@FXML // fx:id="recipeName"
 	TextField recipeName = new TextField(); 
 
 	@FXML // fx:id="ingreName"
@@ -40,6 +40,9 @@ public class NewController implements Initializable{
 
 	@FXML // fx:id="ingreUnit"
 	TextField ingreUnit = new TextField();
+	
+	@FXML // fx:id="textCategory"
+	TextField textCategory = new TextField();
 
 	@FXML // fx:id="servingSize"
 	ComboBox<String> servingSize = new ComboBox<>();
@@ -58,6 +61,9 @@ public class NewController implements Initializable{
 
 	@FXML // fx:id="ingredientsTable"
 	TableView<Ingredient> ingredientsTable = new TableView<>();
+	
+	@FXML // fx:id="tableCategory"
+	ListView<String> tableCategory = new ListView<>();
 
 	// temporary ingredients list
 	ObservableList<Ingredient> ingredients = FXCollections.observableArrayList();
@@ -74,10 +80,10 @@ public class NewController implements Initializable{
 		 */
 		servingSize.getItems().addAll("1", "2", "3");		
 		servingSize.setOnAction( e -> {
-			servingSize.setPromptText("Serving Size" + servingSize.getValue());
 			for (int i = 0; i < ingredients.size(); i++) {
 				double tempQty;
 				tempQty = Double.parseDouble(servingSize.getValue()) * qtyPerServingSize.get(i);
+				System.out.println(String.valueOf(tempQty));
 				changeValueAt(i, 2, tempQty, ingredientsTable);
 			}
 		});
@@ -98,16 +104,12 @@ public class NewController implements Initializable{
 		ingredientsTable.setItems(ingredients);
 		ingredientsTable.getColumns().addAll(ingredientColumn, quantityColumn, unitColumn);
 
-		// Disable if nothing enter in ingreName or ingreQty or ingreUnit is empty
-		addIngredient.disabledProperty().and(ingreName.textProperty().isEqualTo("")
-				.or(ingreQty.textProperty().isEqualTo("")).or(ingreUnit.textProperty().isEqualTo("")));
-
 		/**
 		 * EventHandler for adding an ingredient
 		 */
 		addIngredient.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
-			public void handle(ActionEvent event) throws IllegalArgumentException {
+			public void handle(ActionEvent event) {
 				try {
 
 					if (ingreName.getText().equals(null) || ingreQty.getText().equals(null) || ingreUnit.getText().equals(null) ||
@@ -142,6 +144,7 @@ public class NewController implements Initializable{
 					int selectedIndex = ingredientsTable.getSelectionModel().getSelectedIndex();
 					if (selectedIndex >= 0) {
 						ingredientsTable.getItems().remove(selectedIndex);
+						qtyPerServingSize.remove(selectedIndex);
 					}
 					else {
 						AlertBox.display("Warning", "No Item Selected");
@@ -153,6 +156,43 @@ public class NewController implements Initializable{
 			}
 		});
 
+		/**
+		 * Event Handler for adding a category
+		 */
+		addCategory.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent event) throws IllegalArgumentException {
+				
+				try {
+					if (textCategory.getText().equals(null) || textCategory.getText().equals("")) throw new IllegalArgumentException();
+					if (!isNumeric(textCategory.getText())) throw new IllegalArgumentException();
+					tableCategory.getItems().add(textCategory.getText());
+				} catch (IllegalArgumentException e) {
+					AlertBox.display("Warning", "Category field cannot be a number or empty");
+				}
+				
+			}
+			
+		});
+		
+		/**
+		 * 
+		 */
+		delCategory.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent event) throws IllegalArgumentException {
+				
+				try {
+
+				} catch (IllegalArgumentException e) {
+
+				}
+				
+			}
+			
+		});
 	}
 
 	/**
