@@ -141,7 +141,7 @@
                               <Insets />
                            </HBox.margin>
                         </VBox>
-                        <ListView prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                        <ListView fx:id="categoryTable" prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>

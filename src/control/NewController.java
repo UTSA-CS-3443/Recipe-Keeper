@@ -62,8 +62,9 @@ public class NewController implements Initializable{
 	@FXML // fx:id="ingredientsTable"
 	TableView<Ingredient> ingredientsTable = new TableView<>();
 	
-	@FXML // fx:id="tableCategory"
-	ListView<String> tableCategory = new ListView<>();
+	@FXML // fx:id="categoryTable"
+	ListView<String> categoryTable = new ListView<>();
+	ObservableList<String> categories =FXCollections.observableArrayList();
 
 	// temporary ingredients list
 	ObservableList<Ingredient> ingredients = FXCollections.observableArrayList();
@@ -104,6 +105,9 @@ public class NewController implements Initializable{
 		ingredientsTable.setItems(ingredients);
 		ingredientsTable.getColumns().addAll(ingredientColumn, quantityColumn, unitColumn);
 
+		// Initialize Category table
+		categoryTable.setItems(categories);
+		
 		/**
 		 * EventHandler for adding an ingredient
 		 */
@@ -162,12 +166,12 @@ public class NewController implements Initializable{
 		addCategory.setOnAction(new EventHandler<ActionEvent>() {
 
 			@Override
-			public void handle(ActionEvent event) throws IllegalArgumentException {
+			public void handle(ActionEvent event) {
 				
 				try {
 					if (textCategory.getText().equals(null) || textCategory.getText().equals("")) throw new IllegalArgumentException();
-					if (!isNumeric(textCategory.getText())) throw new IllegalArgumentException();
-					tableCategory.getItems().add(textCategory.getText());
+					if (isNumeric(textCategory.getText())) throw new IllegalArgumentException();
+					categories.add(textCategory.getText());
 				} catch (IllegalArgumentException e) {
 					AlertBox.display("Warning", "Category field cannot be a number or empty");
 				}
@@ -177,17 +181,25 @@ public class NewController implements Initializable{
 		});
 		
 		/**
-		 * 
+		 * Event Handler for deleting a category
 		 */
 		delCategory.setOnAction(new EventHandler<ActionEvent>() {
 
 			@Override
-			public void handle(ActionEvent event) throws IllegalArgumentException {
+			public void handle(ActionEvent event) {
 				
 				try {
-
-				} catch (IllegalArgumentException e) {
-
+					if (categories.size() < 1) throw new RuntimeException();
+					
+					int selectedIndex = categoryTable.getSelectionModel().getSelectedIndex();
+					if (selectedIndex >= 0) {
+						categoryTable.getItems().remove(selectedIndex);
+					}
+					else {
+						AlertBox.display("Warning", "No Item Selected");
+					}
+				} catch (RuntimeException e) {
+					AlertBox.display("Warning", "Category List Is Empty");
 				}
 				
 			}
